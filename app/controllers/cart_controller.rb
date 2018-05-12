@@ -11,7 +11,7 @@ class CartController < ApplicationController
   
   def add
     
-    #get the id of the prodyce we want to add
+    #get the id of the product we want to add
     
     id = params[:id]
     
