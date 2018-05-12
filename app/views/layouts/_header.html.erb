@@ -1,0 +1,47 @@
+    <header class="headSec">
+      <%= image_tag("FlicsPlex_logo_Medium.png", alt: "FlicsPlex Logo", :class => "FlicsPlexLogo") %>
+      <h1>FlicsPlex</h1>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+
+       
+        <% if user_signed_in? %>
+        <li><%= link_to"Movies", movies_path %></li>
+        <!--<li><%= link_to"Old Sign Out", logout_path %></li>-->
+        <li><%= link_to"Cart", cart_path %></li>
+        <% else %>
+        <!--<li><%= link_to"Old Sign In", login_path %></li>-->
+        <% end %>
+        
+        <% if admin_signed_in? %>
+        <li><%= link_to"Movies", movies_path %></li>
+        <% end %>
+        
+        <li><%= link_to "About", about_path %></li>
+        <!--<li><%= link_to "Help", help_path %></li>-->
+        
+        <!--devise login-->
+        
+        <% if user_signed_in? %>
+        
+        <li><a href = '#'>Hi <%= current_user.email %></a></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+        
+        <% else %>
+        
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+        
+        
+        <% if admin_signed_in? %>
+        <li><%= link_to 'Admin Sign Out', destroy_admin_session_path, :method => :delete %> </li>
+        <% else %>
+        <li><%= link_to 'Admin Sign In', new_admin_session_path %> </li>
+        <% end %>
+        
+
+        
+        <% end %>
+        
+      </ul>
+    </header>

@@ -1,0 +1,15 @@
+<h1>Choose A Genre</h1>
+
+
+    
+    <% @categories.each do |category| %>
+    <div class="movieHols">
+        
+        <h1><%= category.title %></h1>
+        <%= link_to (image_tag category.image, :class => "movieHolsIm"), category %>
+        <p><%= category.description %></p>
+        <p><a href="/category/<%= category.title %>"><%= category.title %></a></p>
+        
+    </div>
+
+    <% end %>

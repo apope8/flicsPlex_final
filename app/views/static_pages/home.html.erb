@@ -1,0 +1,21 @@
+<% provide(:title, 'Home') %>
+
+<div class ="mainCont">
+
+    <h1>Home</h1>
+    <p>Welcome to our Movie Store!</p>
+    <hr>
+    <% if user_signed_in? %>
+    <%= render 'layouts/categories' %>
+    <% else %>
+    <p>Sign In or Sign Up to Begin!</p>
+    <% end %>
+    
+</div>
+
+<hr>
+
+<div class="mainCont">
+    <h2>Search</h2>
+    <%= render 'layouts/search' %>
+</div>

@@ -1,0 +1,9 @@
+<footer class="foot">
+<% if user_signed_in? %>
+<%= link_to 'Your Orders', orders_path, :class => "button", :role => "button" %>
+<% end %>
+
+<% if admin_signed_in? %>
+<%= link_to 'New Category', new_category_path, :class => "button", :role=>"button"%>
+<% end %>
+</footer>

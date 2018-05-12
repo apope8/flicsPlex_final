@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<table id = "customers">
+    <!--declare a variable, "total" add set value to 0 -->
+    <% total = 0 %>
+    <!-- Start a for each loop that takes in the quantity and id of each movie in the cart -->
+    <% @cart.each do |id, quantity| %>
+    
+    <% movie = Movie.find_by_id(id) %>
+    
+    <tr>
+        <td>
+            <div class ="image">
+                <%= link_to (image_tag movie.image_url, :style =>"height:40px"), movie %>
+            </div>
+        </td>
+        <td>
+            <%= link_to movie.title, movie %>
+        </td>
+        <td>
+            <a href='/cart/remove/<%= movie.id %>'>Remove From Cart</a>
+        </td>
+        <td>
+            <%= number_to_currency(movie.price, :unit => "€") %>
+        </td>
+        <td>
+            <%= quantity %>
+        </td>
+        <td>
+            <%= number_to_currency(quantity*movie.price, :unit => "€") %>
+        </td>
+    </tr>
+    <tr><% total += quantity * movie.price %>
+        
+    </tr>
+    
+    <% end %>
+    
+    <td>
+        Grand Total: <%= number_to_currency(total, :unit => "€") %>
+    </td>
+    
+</table>
+
+<p>
+    <a href="/movies" class="button">Continue Shopping</a>
+    <a href="/checkout" class="button">Checkout</a>
+    <a href="/clearCart" class="button">Clear Cart</a>
+</p>

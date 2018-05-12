@@ -1,0 +1,6 @@
+<%= form_tag("/search", :method => "post") do %>
+<%= label_tag(:srcbx, "Search for a Movie") %>
+<%= text_field_tag(:srcbx) %>
+<%= submit_tag("Search") %>
+
+<% end %>

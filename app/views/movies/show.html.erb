@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div id="movieContainer">
+  <h1><%= @movie.title %></h1>
+  
+  <%= image_tag @movie.image_url, :class => 'welcomeIm' %>
+  <p><%= @movie.description %></p>
+  
+  <div class="movieHols">
+    
+    <h2><%= number_to_currency(@movie.price, :unit => "€") %></h2>
+    <br>
+    <h3>Genre:  <%= @movie.genre %></h3>
+    <br>
+    <h3>Rating:  <%= @movie.rating %> </h3>
+    
+    <% if admin_signed_in? %>
+    <%= link_to 'Edit', edit_movie_path(@movie), :class => "button", :role => "button" %> 
+    <%= link_to 'Back', movies_path, :class => "button", :role => "button" %>
+    <% else %>
+    <%= link_to 'Click Here To Sign In and Buy this Movie', new_user_session_path, :class => "button", :role => "button" %>
+    <% end %>
+  </div>
+  
+  
+</div
+
+
